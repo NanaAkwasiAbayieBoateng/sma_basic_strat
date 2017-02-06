@@ -58,7 +58,7 @@ add.rule(strat.name, name = "ruleSignal",
                           replace = FALSE, prefer = "Open", orderqty = order.qty, atrMod = "X"),
          type = "enter", path.dep = TRUE, label = "enterLong.safe")
 
-# Exit a long position on goShort
+# Exit a long
 add.rule(strat.name, name = "ruleSignal",
          arguments = list(sigcol = "fast.crossed.below.slow", sigval = TRUE, ordertype = "market", orderside = "long",
                           replace = FALSE, prefer = "Open", orderqty = "all", atrMod = "X"),
@@ -74,14 +74,14 @@ add.rule(strat.name, name = "ruleSignal",
                           replace = FALSE, prefer = "Open", orderqty = -order.qty, atrMod = "X"),
          type = "enter", path.dep = TRUE, label = "enterShort.safe")
 
-# Exit a short position on goShort
+# Exit short
 add.rule(strat.name, name = "ruleSignal",
          arguments = list(sigcol = "fast.crossed.above.slow", sigval = TRUE, ordertype = "market", orderside = "short",
                           replace = FALSE, prefer = "Open", orderqty = "all", atrMod = "X"),
          type = "exit", path.dep = TRUE, label = "exitShort.on.close.crossing.fast")
 
 
-backtest.result <- applyStrategy(strategy = strat.name, portfolios = portofolio.name)
+applyStrategy(strategy = strat.name, portfolios = portofolio.name)
 
 updatePortf(portofolio.name)
 updateAcct(account.name)
